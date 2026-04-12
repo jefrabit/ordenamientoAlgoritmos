@@ -342,11 +342,21 @@ int main() {
     cout << "Ingrese la cantidad de numeros a generar: ";
     cin >> n;
 
+    if (n <= 0) {
+        cout << "Error: La cantidad debe ser mayor a 0" << endl;
+        return 1;
+    }
+
     cout << "Ingrese el valor minimo del rango: ";
     cin >> min;
 
     cout << "Ingrese el valor maximo del rango: ";
     cin >> max;
+
+    if (min > max) {
+        cout << "Error: El minimo no puede ser mayor que el maximo" << endl;
+        return 1;
+    }
 
     cout << endl;
 
