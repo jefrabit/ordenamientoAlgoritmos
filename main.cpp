@@ -14,11 +14,11 @@ struct Resultado {
 };
 
 // Función para generar array de números aleatorios
-vector<int> generarArray(int n, int min, int max) {
+vector<int> generarArray(int n, int minVal, int maxVal) {
     vector<int> arr(n);
-    srand(time(NULL));
+    srand(time(NULL) + rand());  // Mejor seed aleatoria
     for (int i = 0; i < n; i++) {
-        arr[i] = rand() % (max - min + 1) + min;
+        arr[i] = rand() % (maxVal - minVal + 1) + minVal;
     }
     return arr;
 }
