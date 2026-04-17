@@ -389,6 +389,9 @@ int main() {
     resultados.push_back(heapSort(copiarArray(arrayOriginal)));
     resultados.push_back(radixSort(copiarArray(arrayOriginal)));
 
+    cout << "Ejecutando 8 algoritmos de ordenamiento..." << endl;
+    cout << endl;
+
     // Ordenar por tiempo
     for (int i = 0; i < resultados.size() - 1; i++) {
         for (int j = i + 1; j < resultados.size(); j++) {
