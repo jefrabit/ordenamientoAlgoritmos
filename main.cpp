@@ -363,16 +363,16 @@ int main() {
     // Generar array original
     vector<int> arrayOriginal = generarArray(n, min, max);
 
-    cout << "Array generado:" << endl;
+    cout << "Array generado (" << n << " elementos):" << endl;
     cout << "  ";
-    if (n <= 20) {
+    if (n <= 30) {
         imprimirArray(arrayOriginal);
     } else {
-        cout << "[Primeros 20 elementos: ";
-        for (int i = 0; i < 20; i++) {
-            cout << arrayOriginal[i] << (i < 19 ? ", " : "");
+        cout << "[";
+        for (int i = 0; i < 15; i++) {
+            cout << arrayOriginal[i] << (i < 14 ? ", " : "");
         }
-        cout << ", ...]" << endl;
+        cout << ", ... ," << arrayOriginal[n-1] << "]" << endl;
     }
 
     cout << endl;
