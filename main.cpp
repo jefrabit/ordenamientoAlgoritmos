@@ -337,6 +337,10 @@ int main() {
     cout << "========================================" << endl;
     cout << "   COMPARADOR DE ALGORITMOS DE ORDENAMIENTO" << endl;
     cout << "========================================" << endl;
+    cout << "  Algoritmos: Burbuja, Seleccion, Insercion" << endl;
+    cout << "              Shell, QuickSort, MergeSort" << endl;
+    cout << "              HeapSort, RadixSort" << endl;
+    cout << "========================================" << endl;
     cout << endl;
 
     cout << "Ingrese la cantidad de numeros a generar: ";
