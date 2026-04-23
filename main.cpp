@@ -421,6 +421,9 @@ int main() {
     }
 
     cout << "+------+-----------+------------+---------------+" << endl;
+    cout << endl;
+    cout << "Nota: Los tiempos están en nanosegundos (ns)" << endl;
+    cout << "      1 segundo = 1,000,000,000 nanosegundos" << endl;
 
     return 0;
 }
