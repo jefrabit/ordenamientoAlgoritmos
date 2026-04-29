@@ -48,13 +48,17 @@ Resultado burbuja(vector<int> arr) {
     int n = arr.size();
 
     for (int i = 0; i < n - 1; i++) {
+        bool huboIntercambio = false;
         for (int j = 0; j < n - i - 1; j++) {
             r.pasos++;  // Contador de comparación
             if (arr[j] > arr[j + 1]) {
                 swap(arr[j], arr[j + 1]);
                 r.pasos++;  // Contador de intercambio
+                huboIntercambio = true;
             }
         }
+        // Optimización: si no hubo intercambios, el array ya está ordenado
+        if (!huboIntercambio) break;
     }
 
     r.tiempo = (double)(clock() - inicio);
