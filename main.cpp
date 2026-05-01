@@ -38,7 +38,8 @@ vector<int> copiarArray(const vector<int>& arr) {
     return vector<int>(arr);
 }
 
-// Algoritmo Burbuja
+// Algoritmo Burbuja (Bubble Sort)
+// Complejidad: O(n^2) en promedio, O(n) mejor caso con optimización
 Resultado burbuja(vector<int> arr) {
     Resultado r;
     r.nombre = "Burbuja";
@@ -65,7 +66,8 @@ Resultado burbuja(vector<int> arr) {
     return r;
 }
 
-// Algoritmo Selección
+// Algoritmo Selección (Selection Sort)
+// Complejidad: O(n^2) siempre, sin mejor caso
 Resultado seleccion(vector<int> arr) {
     Resultado r;
     r.nombre = "Seleccion";
