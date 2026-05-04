@@ -10,7 +10,7 @@ using namespace std;
 struct Resultado {
     string nombre;
     long long pasos;
-    double tiempo;  // en nanosegundos
+    double tiempo;  // en milisegundos
 };
 
 // Función para generar array de números aleatorios
@@ -62,7 +62,7 @@ Resultado burbuja(vector<int> arr) {
         if (!huboIntercambio) break;
     }
 
-    r.tiempo = (double)(clock() - inicio);
+    r.tiempo = (double)(clock() - inicio) * 1000.0 / CLOCKS_PER_SEC;
     return r;
 }
 
@@ -90,7 +90,7 @@ Resultado seleccion(vector<int> arr) {
         }
     }
 
-    r.tiempo = (double)(clock() - inicio);
+    r.tiempo = (double)(clock() - inicio) * 1000.0 / CLOCKS_PER_SEC;
     return r;
 }
 
@@ -115,7 +115,7 @@ Resultado insercion(vector<int> arr) {
         arr[j + 1] = key;
     }
 
-    r.tiempo = (double)(clock() - inicio);
+    r.tiempo = (double)(clock() - inicio) * 1000.0 / CLOCKS_PER_SEC;
     return r;
 }
 
@@ -141,7 +141,7 @@ Resultado shell(vector<int> arr) {
         }
     }
 
-    r.tiempo = (double)(clock() - inicio);
+    r.tiempo = (double)(clock() - inicio) * 1000.0 / CLOCKS_PER_SEC;
     return r;
 }
 
@@ -181,7 +181,7 @@ Resultado quickSort(vector<int> arr) {
 
     quickSortHelper(arr, 0, arr.size() - 1, r.pasos);
 
-    r.tiempo = (double)(clock() - inicio);
+    r.tiempo = (double)(clock() - inicio) * 1000.0 / CLOCKS_PER_SEC;
     return r;
 }
 
@@ -243,7 +243,7 @@ Resultado mergeSort(vector<int> arr) {
 
     mergeSortHelper(arr, 0, arr.size() - 1, r.pasos);
 
-    r.tiempo = (double)(clock() - inicio);
+    r.tiempo = (double)(clock() - inicio) * 1000.0 / CLOCKS_PER_SEC;
     return r;
 }
 
@@ -290,7 +290,7 @@ Resultado heapSort(vector<int> arr) {
         heapify(arr, i, 0, r.pasos);
     }
 
-    r.tiempo = (double)(clock() - inicio);
+    r.tiempo = (double)(clock() - inicio) * 1000.0 / CLOCKS_PER_SEC;
     return r;
 }
 
@@ -333,7 +333,7 @@ Resultado radixSort(vector<int> arr) {
         }
     }
 
-    r.tiempo = (double)(clock() - inicio);
+    r.tiempo = (double)(clock() - inicio) * 1000.0 / CLOCKS_PER_SEC;
     return r;
 }
 
@@ -375,15 +375,7 @@ int main() {
 
     cout << "Array generado (" << n << " elementos):" << endl;
     cout << "  ";
-    if (n <= 30) {
-        imprimirArray(arrayOriginal);
-    } else {
-        cout << "[";
-        for (int i = 0; i < 15; i++) {
-            cout << arrayOriginal[i] << (i < 14 ? ", " : "");
-        }
-        cout << ", ... ," << arrayOriginal[n-1] << "]" << endl;
-    }
+    imprimirArray(arrayOriginal);
 
     cout << endl;
 
@@ -416,7 +408,7 @@ int main() {
     cout << "====================================================" << endl;
     cout << endl;
     cout << "+------+-----------+------------+---------------+" << endl;
-    cout << "| Pos | Algoritmo |   Pasos    | Tiempo (ns)   |" << endl;
+    cout << "| Pos | Algoritmo |   Pasos    | Tiempo (ms)   |" << endl;
     cout << "+------+-----------+------------+---------------+" << endl;
 
     for (int i = 0; i < resultados.size(); i++) {
@@ -428,8 +420,7 @@ int main() {
 
     cout << "+------+-----------+------------+---------------+" << endl;
     cout << endl;
-    cout << "Nota: Los tiempos están en nanosegundos (ns)" << endl;
-    cout << "      1 segundo = 1,000,000,000 nanosegundos" << endl;
+    cout << "Nota: Los tiempos están en milisegundos (ms)" << endl;
     cout << endl;
     cout << "Ejecucion completada exitosamente!" << endl;
 
