@@ -55,7 +55,7 @@ Ejecutando 8 algoritmos de ordenamiento...
 ====================================================
 
 +------+-----------+------------+---------------+
-| Pos | Algoritmo |   Pasos    | Tiempo (ms)   |
+| Pos | Algoritmo |   Pasos    | Tiempo (ns)   |
 +------+-----------+------------+---------------+
 | 1        | RadixSort      | 720         | 0.053         |
 | 2        | QuickSort      | 1350        | 0.082         |
@@ -67,7 +67,7 @@ Ejecutando 8 algoritmos de ordenamiento...
 | 8        | Burbuja        | 10738       | 0.58          |
 +------+-----------+------------+---------------+
 
-Nota: Los tiempos están en milisegundos (ms)
+Nota: Los tiempos están en nanosegundos (ns)
 
 Ejecucion completada exitosamente!
 ```
@@ -97,7 +97,7 @@ Ejecutando 8 algoritmos de ordenamiento...
 ====================================================
 
 +------+-----------+------------+---------------+
-| Pos | Algoritmo |   Pasos    | Tiempo (ms)   |
+| Pos | Algoritmo |   Pasos    | Tiempo (ns)   |
 +------+-----------+------------+---------------+
 | 1        | RadixSort      | 12000       | 0.069         |
 | 2        | QuickSort      | 26601       | 0.143         |

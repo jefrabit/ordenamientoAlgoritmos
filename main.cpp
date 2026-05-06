@@ -3,6 +3,7 @@
 #include <ctime>
 #include <vector>
 #include <string>
+#include <chrono>
 
 using namespace std;
 
@@ -10,7 +11,7 @@ using namespace std;
 struct Resultado {
     string nombre;
     long long pasos;
-    double tiempo;  // en milisegundos
+    long long tiempo;  // en nanosegundos
 };
 
 // Función para generar array de números aleatorios
@@ -45,7 +46,7 @@ Resultado burbuja(vector<int> arr) {
     r.nombre = "Burbuja";
     r.pasos = 0;
 
-    clock_t inicio = clock();
+    auto inicio = chrono::high_resolution_clock::now();
     int n = arr.size();
 
     for (int i = 0; i < n - 1; i++) {
@@ -62,7 +63,8 @@ Resultado burbuja(vector<int> arr) {
         if (!huboIntercambio) break;
     }
 
-    r.tiempo = (double)(clock() - inicio) * 1000.0 / CLOCKS_PER_SEC;
+    auto fin = chrono::high_resolution_clock::now();
+    r.tiempo = chrono::duration_cast<chrono::nanoseconds>(fin - inicio).count();
     return r;
 }
 
@@ -73,7 +75,7 @@ Resultado seleccion(vector<int> arr) {
     r.nombre = "Seleccion";
     r.pasos = 0;
 
-    clock_t inicio = clock();
+    auto inicio = chrono::high_resolution_clock::now();
     int n = arr.size();
 
     for (int i = 0; i < n - 1; i++) {
@@ -90,7 +92,8 @@ Resultado seleccion(vector<int> arr) {
         }
     }
 
-    r.tiempo = (double)(clock() - inicio) * 1000.0 / CLOCKS_PER_SEC;
+    auto fin = chrono::high_resolution_clock::now();
+    r.tiempo = chrono::duration_cast<chrono::nanoseconds>(fin - inicio).count();
     return r;
 }
 
@@ -100,7 +103,7 @@ Resultado insercion(vector<int> arr) {
     r.nombre = "Insercion";
     r.pasos = 0;
 
-    clock_t inicio = clock();
+    auto inicio = chrono::high_resolution_clock::now();
     int n = arr.size();
 
     for (int i = 1; i < n; i++) {
@@ -115,7 +118,8 @@ Resultado insercion(vector<int> arr) {
         arr[j + 1] = key;
     }
 
-    r.tiempo = (double)(clock() - inicio) * 1000.0 / CLOCKS_PER_SEC;
+    auto fin = chrono::high_resolution_clock::now();
+    r.tiempo = chrono::duration_cast<chrono::nanoseconds>(fin - inicio).count();
     return r;
 }
 
@@ -125,7 +129,7 @@ Resultado shell(vector<int> arr) {
     r.nombre = "Shell";
     r.pasos = 0;
 
-    clock_t inicio = clock();
+    auto inicio = chrono::high_resolution_clock::now();
     int n = arr.size();
 
     for (int gap = n / 2; gap > 0; gap /= 2) {
@@ -141,7 +145,8 @@ Resultado shell(vector<int> arr) {
         }
     }
 
-    r.tiempo = (double)(clock() - inicio) * 1000.0 / CLOCKS_PER_SEC;
+    auto fin = chrono::high_resolution_clock::now();
+    r.tiempo = chrono::duration_cast<chrono::nanoseconds>(fin - inicio).count();
     return r;
 }
 
@@ -177,11 +182,12 @@ Resultado quickSort(vector<int> arr) {
     r.nombre = "QuickSort";
     r.pasos = 0;
 
-    clock_t inicio = clock();
+    auto inicio = chrono::high_resolution_clock::now();
 
     quickSortHelper(arr, 0, arr.size() - 1, r.pasos);
 
-    r.tiempo = (double)(clock() - inicio) * 1000.0 / CLOCKS_PER_SEC;
+    auto fin = chrono::high_resolution_clock::now();
+    r.tiempo = chrono::duration_cast<chrono::nanoseconds>(fin - inicio).count();
     return r;
 }
 
@@ -239,11 +245,12 @@ Resultado mergeSort(vector<int> arr) {
     r.nombre = "MergeSort";
     r.pasos = 0;
 
-    clock_t inicio = clock();
+    auto inicio = chrono::high_resolution_clock::now();
 
     mergeSortHelper(arr, 0, arr.size() - 1, r.pasos);
 
-    r.tiempo = (double)(clock() - inicio) * 1000.0 / CLOCKS_PER_SEC;
+    auto fin = chrono::high_resolution_clock::now();
+    r.tiempo = chrono::duration_cast<chrono::nanoseconds>(fin - inicio).count();
     return r;
 }
 
@@ -278,7 +285,7 @@ Resultado heapSort(vector<int> arr) {
     r.nombre = "HeapSort";
     r.pasos = 0;
 
-    clock_t inicio = clock();
+    auto inicio = chrono::high_resolution_clock::now();
     int n = arr.size();
 
     for (int i = n / 2 - 1; i >= 0; i--)
@@ -290,7 +297,8 @@ Resultado heapSort(vector<int> arr) {
         heapify(arr, i, 0, r.pasos);
     }
 
-    r.tiempo = (double)(clock() - inicio) * 1000.0 / CLOCKS_PER_SEC;
+    auto fin = chrono::high_resolution_clock::now();
+    r.tiempo = chrono::duration_cast<chrono::nanoseconds>(fin - inicio).count();
     return r;
 }
 
@@ -300,7 +308,7 @@ Resultado radixSort(vector<int> arr) {
     r.nombre = "RadixSort";
     r.pasos = 0;
 
-    clock_t inicio = clock();
+    auto inicio = chrono::high_resolution_clock::now();
     int n = arr.size();
 
     // Encontrar el valor máximo
@@ -333,7 +341,8 @@ Resultado radixSort(vector<int> arr) {
         }
     }
 
-    r.tiempo = (double)(clock() - inicio) * 1000.0 / CLOCKS_PER_SEC;
+    auto fin = chrono::high_resolution_clock::now();
+    r.tiempo = chrono::duration_cast<chrono::nanoseconds>(fin - inicio).count();
     return r;
 }
 
@@ -408,7 +417,7 @@ int main() {
     cout << "====================================================" << endl;
     cout << endl;
     cout << "+------+-----------+------------+---------------+" << endl;
-    cout << "| Pos | Algoritmo |   Pasos    | Tiempo (ms)   |" << endl;
+    cout << "| Pos | Algoritmo |   Pasos    | Tiempo (ns)   |" << endl;
     cout << "+------+-----------+------------+---------------+" << endl;
 
     for (int i = 0; i < resultados.size(); i++) {
@@ -420,7 +429,7 @@ int main() {
 
     cout << "+------+-----------+------------+---------------+" << endl;
     cout << endl;
-    cout << "Nota: Los tiempos están en milisegundos (ms)" << endl;
+    cout << "Nota: Los tiempos están en nanosegundos (ns)" << endl;
     cout << endl;
     cout << "Ejecucion completada exitosamente!" << endl;
 
